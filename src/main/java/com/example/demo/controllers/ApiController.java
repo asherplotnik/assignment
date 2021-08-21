@@ -19,12 +19,12 @@ public class ApiController {
         this.productService = productService;
     }
 
-    @GetMapping("/product/{id}")
+    @RequestMapping(path="/product/{id}", method=RequestMethod.GET)
     public ResponseEntity<Product> getProduct(@PathVariable int id) throws ApiException {
         return new ResponseEntity<Product>(productService.getProduct(id), HttpStatus.OK);
     }
 
-    @PostMapping("/product")
+    @RequestMapping(path="/product",method = RequestMethod.POST)
     public ResponseEntity<Product> addProduct(@RequestBody Product product) throws ApiException {
         return new ResponseEntity<Product>(productService.addProduct(product), HttpStatus.OK);
     }
